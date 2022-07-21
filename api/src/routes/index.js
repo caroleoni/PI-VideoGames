@@ -1,8 +1,8 @@
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const routesVideoGames = require('./routesVideoGames');
-const routesGenres = require('./routesGenres');
+const routesVideoGames = require('./videogames');
+const routesGenres = require('./genres');
 require("dotenv").config();
 
 const router = Router();

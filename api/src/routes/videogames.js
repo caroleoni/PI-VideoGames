@@ -170,24 +170,19 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { id, name, image, description, released, rating, genres, platforms, createdInDb } = req.body
+        const { id, name, description, platforms, createdInDb, genres } = req.body
+        console.log(req.body)
 
-        let newVideoGames = await Videogame.create({
-            id, 
-            name, 
-            image, 
-            description, 
-            released, 
-            rating, 
-            platforms, 
-            createdInDb
-        })
+        if(!id || !name || description || !platforms || !genres || !createdInDb) return res.status(404).json('Mandatory data missing')
+
+        let newVideoGames = await Videogame.create( req.body );
+
         let genre = await Genre.findAll({
             where: {
                 name: genres
             }
         });
-            newVideoGames.addGenres(genre);
+            newVideoGames.addGenre(genre);
             res.json('VideoGame Created Successfully')
 
     } catch (error) {

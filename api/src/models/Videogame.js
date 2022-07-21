@@ -15,20 +15,20 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     released: { //Fecha de lanzamiento
       type: DataTypes.STRING
     },
     image:{
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
     rating: {
-      type: DataTypes.STRING
+      type: DataTypes.FLOAT
     },
     platforms: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
     },
     createdInDb: {
@@ -36,5 +36,8 @@ module.exports = (sequelize) => {
       allowNull: false,
       default: true
     }
+  }, 
+  {
+    timestamps: false
   });
 };
